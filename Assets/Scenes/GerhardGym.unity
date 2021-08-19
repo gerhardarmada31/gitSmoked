@@ -313,6 +313,7 @@ GameObject:
   - component: {fileID: 607392853}
   - component: {fileID: 607392855}
   - component: {fileID: 607392856}
+  - component: {fileID: 607392857}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -379,6 +380,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfad69124b20f1d45b8c1584f01175b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &607392857
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 607392852}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 093f6884967bdac4da33183637d6ef19, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 8
+  gravityScale: -40
+  jumpCount: 0
+  jumpHeight: 5
+  maxJump: 2
 --- !u!1 &623278959
 GameObject:
   m_ObjectHideFlags: 3
@@ -508,7 +526,7 @@ MonoBehaviour:
   m_StreamingVersion: 20170927
   m_Priority: 10
   m_StandbyUpdate: 2
-  m_LookAt: {fileID: 607392854}
+  m_LookAt: {fileID: 0}
   m_Follow: {fileID: 607392854}
   m_Lens:
     FieldOfView: 60
@@ -519,7 +537,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.9904306, y: 1}
+    m_SensorSize: {x: 4.6510067, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0

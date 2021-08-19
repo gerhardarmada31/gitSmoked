@@ -5,43 +5,60 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     //CONST
-    private Vector2 moveInputs;
-    private Vector2 charaVelocity;
-    private bool isGround; 
+    private Vector3 dirInput;
+    private Vector3 charaVelocity;
+    private bool onGround;
     private CharacterController charController;
-
-    [SerializeField] private Transform playerMainCam;
-
 
     [Header("Movement Settings")]
     [SerializeField] private float moveSpeed;
-    [SerializeField] private int jumpCount = 0;
+    [SerializeField] private float gravityScale = -40;
+    // [SerializeField] private float turnSpeed;
 
+    [SerializeField] private int jumpCount = 0;
+    [SerializeField] private float jumpHeight;
+    [SerializeField] private int maxJump = 1;
+
+    private void Awake()
+    {
+        charController = GetComponent<CharacterController>();
+    }
 
 
     // Start is called before the first frame update
     void Start()
     {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     public void Move(Vector2 _playerInputs)
     {
-
-
         //Init variables
-        moveInputs = new Vector2(_playerInputs.x, _playerInputs.y);
+        dirInput = new Vector3(_playerInputs.x, 0, _playerInputs.y);
 
-        //Rotation of Player
-        if (true)
+        onGround = charController.isGrounded;
+        Vector3 movement = dirInput * moveSpeed;
+        charaVelocity.y += gravityScale * Time.deltaTime;
+        movement.y = charaVelocity.y;
+
+        if (onGround && charaVelocity.y < 0)
         {
-            
+            charaVelocity.y = -3f;
+            jumpCount = 0;
+        }
+        else
+        {
+            //COYOTE JUMP IF WE HAVE TIME
+        }
+        charController.Move(movement * Time.deltaTime);
+    }
+
+    public void Jump()
+    {
+        if (onGround || jumpCount < maxJump)
+        {
+            jumpCount++;
+            charaVelocity.y += Mathf.Sqrt(jumpHeight * -3f * gravityScale);
         }
     }
 }
