@@ -12,3 +12,8 @@ public interface IDestroyable
 {
 
 }
+
+public interface IDamagable
+{
+    void TakeDamage(int damage);
+}

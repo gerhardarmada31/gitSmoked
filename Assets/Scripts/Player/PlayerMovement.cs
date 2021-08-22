@@ -72,6 +72,6 @@ public class PlayerMovement : MonoBehaviour, ICollectable
 
     public void GetCoins(int coins)
     {
-        playerStatus.myCoin += coins;
+        playerStatus.player.coin += coins;
     }
 }
