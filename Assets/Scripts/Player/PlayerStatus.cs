@@ -8,38 +8,31 @@ public class PlayerStatus : MonoBehaviour, IDamagable
     public Player_SO player;
 
 
+
     //CONST
     public int myCoin { get; set; }
-    // private bool isInvunerable = false;
+    private bool isInvunerable = false;
+    public bool IsPlayerDash { get; set; }
 
     private void Awake()
     {
-
+        
     }
 
-
-
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
 
     public void TakeDamage(int damage)
     {
-        health -= damage;
-        StartCoroutine(IFrameTime());
+        if (isInvunerable == false)
+        {
+            health -= damage;
+            StartCoroutine(IFrameTime());
+        }
     }
 
     IEnumerator IFrameTime()
     {
-        yield return new WaitForSeconds(1f);
-
+        isInvunerable = true;
+        yield return new WaitForSeconds(2f);
+        isInvunerable = false;
     }
 }

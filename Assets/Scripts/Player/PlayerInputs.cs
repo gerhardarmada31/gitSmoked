@@ -22,16 +22,21 @@ public class PlayerInputs : MonoBehaviour
     private void OnEnable()
     {
         inputs.PlayerCharacter.Move.performed += HandleMove => moveInput = HandleMove.ReadValue<Vector2>();
+        inputs.PlayerCharacter.Dash.performed += HandelDash;
         inputs.PlayerCharacter.Move.canceled += HandleMove => moveInput = Vector2.zero;
         inputs.PlayerCharacter.Jump.performed += HandleJump;
         inputs.Enable();
     }
 
-
+    private void HandelDash(InputAction.CallbackContext context)
+    {
+        playerMovement.Dash();
+    }
 
     private void OnDisable()
     {
         inputs.PlayerCharacter.Move.performed -= HandleMove => moveInput = HandleMove.ReadValue<Vector2>();
+        inputs.PlayerCharacter.Dash.performed -= HandelDash;
         inputs.PlayerCharacter.Move.canceled -= HandleMove => moveInput = Vector2.zero;
         inputs.PlayerCharacter.Jump.performed -= HandleJump;
         inputs.Disable();

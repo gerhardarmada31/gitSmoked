@@ -8,7 +8,7 @@ public interface ICollectable
     void GetCoins(int coins);
 }
 
-public interface IDestroyable
+public interface IEnemy
 {
 
 }
