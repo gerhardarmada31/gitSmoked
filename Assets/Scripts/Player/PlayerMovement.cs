@@ -5,11 +5,14 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour, ICollectable
 {
     //CONST
+    private Animator playerAnim;
     private Vector3 dirInput;
     private Vector3 charaVelocity;
     private bool onGround;
+    private bool isJumping;
     private PlayerStatus playerStatus;
     private CharacterController charController;
+    [SerializeField] private Transform playerMainCam;
 
     [Header("Movement Settings")]
     [SerializeField] private float moveSpeed;
@@ -22,15 +25,38 @@ public class PlayerMovement : MonoBehaviour, ICollectable
     [SerializeField] private int maxDash = 1;
     [SerializeField] private float dashTime = 0.5f;
     private bool isDash = false;
-    
+
 
     private void Awake()
     {
         charController = GetComponent<CharacterController>();
         playerStatus = GetComponent<PlayerStatus>();
+        playerAnim = GetComponent<Animator>();
     }
     public void Move(Vector2 _playerInputs)
     {
+
+        playerAnim.SetFloat("IdletoRun", _playerInputs.x);
+        playerAnim.SetBool("IsFalling", isJumping);
+
+        Vector3 camF = playerMainCam.forward;
+        Vector3 camR = playerMainCam.right;
+        camF.y = 0;
+        camR.y = 0;
+        camF.Normalize();
+        camR.Normalize();
+
+
+        dirInput = new Vector3(_playerInputs.x, 0, _playerInputs.y);
+        dirInput = dirInput.z * camF + dirInput.x * camR;
+        dirInput = Vector3.ClampMagnitude(dirInput, 1);
+
+        //Rotation of Player
+        if (charaVelocity.magnitude > 0.01f && dirInput != Vector3.zero)
+        {
+            Quaternion targetRotation = Quaternion.LookRotation(dirInput);
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, 0.1f);
+        }
 
         //DO A RAYCAST FORWARD
 
@@ -38,7 +64,6 @@ public class PlayerMovement : MonoBehaviour, ICollectable
 
         //Init variables
         //Change the X values to Z
-        dirInput = new Vector3(_playerInputs.x, 0, _playerInputs.y);
 
         onGround = charController.isGrounded;
         Vector3 movement = dirInput * moveSpeed;
@@ -51,6 +76,7 @@ public class PlayerMovement : MonoBehaviour, ICollectable
             charaVelocity.y = -3f;
             jumpCount = 0;
             dashCount = 0;
+            isJumping = false;
             //groundCheck
         }
         else
@@ -64,8 +90,10 @@ public class PlayerMovement : MonoBehaviour, ICollectable
     {
         if (onGround || jumpCount < maxJump)
         {
+            // isJumping = true;
+            playerAnim.SetTrigger("Jump");
             jumpCount++;
-            charaVelocity.y += Mathf.Sqrt(jumpHeight * -3f * gravityScale);
+            charaVelocity.y += Mathf.Sqrt(jumpHeight * -4f * gravityScale);
         }
     }
 

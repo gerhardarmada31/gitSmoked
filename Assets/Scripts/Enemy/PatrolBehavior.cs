@@ -12,8 +12,9 @@ public class PatrolBehavior : StateMachineBehaviour
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        enemyWayPoints = GameObject.FindObjectOfType<Enemy>().GetComponent<Enemy>();
-        randomSpot = Random.Range(0, enemyWayPoints.wayPoints.Count);
+        // enemyWayPoints = GameObject.FindObjectOfType<Enemy>().GetComponent<Enemy>();
+        // randomSpot = Random.Range(0, enemyWayPoints.wayPoints.Count);
+        enemyWayPoints = animator.GetComponent<Enemy>();
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
@@ -21,7 +22,7 @@ public class PatrolBehavior : StateMachineBehaviour
     {
         if (Vector2.Distance(animator.transform.position, enemyWayPoints.wayPoints[wayPointIndex].transform.position) > 2f)
         {
-            animator.transform.position = Vector2.MoveTowards(animator.transform.position, enemyWayPoints.wayPoints[wayPointIndex].transform.position, speed *Time.deltaTime);
+            animator.transform.position = Vector2.MoveTowards(animator.transform.position, enemyWayPoints.wayPoints[wayPointIndex].transform.position, speed * Time.deltaTime);
         }
         else
         {
