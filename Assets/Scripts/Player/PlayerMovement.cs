@@ -35,9 +35,10 @@ public class PlayerMovement : MonoBehaviour, ICollectable
     }
     public void Move(Vector2 _playerInputs)
     {
-
+        var jumpValue = Mathf.Clamp(charaVelocity.y,-100,15);
         playerAnim.SetFloat("IdletoRun", _playerInputs.x);
-        playerAnim.SetBool("IsFalling", isJumping);
+        playerAnim.SetFloat("JumpToFall", jumpValue);
+        playerAnim.SetBool("IsJumping", isJumping);
 
         Vector3 camF = playerMainCam.forward;
         Vector3 camR = playerMainCam.right;
@@ -91,6 +92,7 @@ public class PlayerMovement : MonoBehaviour, ICollectable
         if (onGround || jumpCount < maxJump)
         {
             // isJumping = true;
+            isJumping = true;
             playerAnim.SetTrigger("Jump");
             jumpCount++;
             charaVelocity.y += Mathf.Sqrt(jumpHeight * -4f * gravityScale);

@@ -9,14 +9,21 @@ public class PlayerStatus : MonoBehaviour, IDamagable
     [SerializeField] private UnityEvent restartGame;
     public Player_SO player;
 
+
+    public int Health
+    {
+        get { return health; }
+        set {}
+    }
+
     //CONST
-    public int myCoin { get; set; }
+    public int MyCoin { get; set; }
     private bool isInvunerable = false;
     public bool IsPlayerDash { get; set; }
 
     private void Awake()
     {
-        
+
     }
 
 
@@ -28,7 +35,7 @@ public class PlayerStatus : MonoBehaviour, IDamagable
             StartCoroutine(IFrameTime());
         }
 
-        if (health <=0)
+        if (health <= 0)
         {
             restartGame.Invoke();
         }
