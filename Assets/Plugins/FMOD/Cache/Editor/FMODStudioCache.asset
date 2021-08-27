@@ -14,12 +14,35 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: FMOD/GetSmokeFmod/Build/Desktop/Master.strings.bank
   SubDir: 
-  lastModified: 637655532947194792
+  lastModified: 637655985553144249
   LoadResult: 0
   FileSizes:
   - Name: Desktop
-    Value: 688
+    Value: 826
   Exists: 1
+--- !u!114 &-2023083649239071287
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Player/Jump
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Player/Jump
+  guid: 101c0a0c5b6b8646865e7d3f8197bcd5
+  Banks:
+  - {fileID: 3580952558896576234}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 188
 --- !u!114 &-2021183431953102778
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -37,7 +60,7 @@ MonoBehaviour:
   lastModified: 637655532947174845
   LoadResult: 0
   FileSizes: []
-  Exists: 1
+  Exists: 0
 --- !u!114 &-705182858809626081
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -70,12 +93,133 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EditorBanks:
   - {fileID: -7479830904294072309}
-  - {fileID: -2021183431953102778}
-  EditorEvents: []
+  - {fileID: 3580952558896576234}
+  EditorEvents:
+  - {fileID: -2023083649239071287}
+  - {fileID: 8776018167674661324}
+  - {fileID: 2363266723478540679}
   EditorParameters: []
   MasterBanks:
-  - {fileID: -2021183431953102778}
+  - {fileID: 3580952558896576234}
   StringsBanks:
   - {fileID: -7479830904294072309}
-  stringsBankWriteTime: 637655532947194792
+  stringsBankWriteTime: 637655985553144249
   cacheVersion: 3
+--- !u!114 &276445282204350360
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: FMOD/GetSmokeFmod/Build/Desktop/Master.bank
+  SubDir: 
+  lastModified: 637655968135466106
+  LoadResult: 0
+  FileSizes: []
+  Exists: 0
+--- !u!114 &1126696625484829545
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: FMOD/GetSmokeFmod/Build/Desktop/Master.bank
+  SubDir: 
+  lastModified: 637655966800244617
+  LoadResult: 0
+  FileSizes: []
+  Exists: 0
+--- !u!114 &2363266723478540679
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Player/FootStep
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Player/FootStep
+  guid: b66be6845dc2884ea336568184ca6fad
+  Banks:
+  - {fileID: 3580952558896576234}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 138
+--- !u!114 &3580952558896576234
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: FMOD/GetSmokeFmod/Build/Desktop/Master.bank
+  SubDir: 
+  lastModified: 637655985553134276
+  LoadResult: 0
+  FileSizes: []
+  Exists: 1
+--- !u!114 &6731512610292170598
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: FMOD/GetSmokeFmod/Build/Desktop/Master.bank
+  SubDir: 
+  lastModified: 637655968310813421
+  LoadResult: 0
+  FileSizes: []
+  Exists: 0
+--- !u!114 &8776018167674661324
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Player/Land
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Player/Land
+  guid: 702f7813f339354199bc11b4cb807e15
+  Banks:
+  - {fileID: 3580952558896576234}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 171

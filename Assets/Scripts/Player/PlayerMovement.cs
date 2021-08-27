@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour, ICollectable
     private Vector3 dirInput;
     private Vector3 charaVelocity;
     private bool onGround;
+    private bool wasGrounded = false;
     private bool isJumping;
     private PlayerStatus playerStatus;
     private CharacterController charController;
@@ -35,7 +36,7 @@ public class PlayerMovement : MonoBehaviour, ICollectable
     }
     public void Move(Vector2 _playerInputs)
     {
-        var jumpValue = Mathf.Clamp(charaVelocity.y,-100,15);
+        var jumpValue = Mathf.Clamp(charaVelocity.y, -100, 15);
         playerAnim.SetFloat("IdletoRun", _playerInputs.x);
         playerAnim.SetFloat("JumpToFall", jumpValue);
         playerAnim.SetBool("IsJumping", isJumping);
@@ -78,6 +79,12 @@ public class PlayerMovement : MonoBehaviour, ICollectable
             jumpCount = 0;
             dashCount = 0;
             isJumping = false;
+
+            if (onGround && !wasGrounded)
+            {
+                FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Player/Land", GetComponent<Transform>().position);
+                wasGrounded = true;
+            }
             //groundCheck
         }
         else
@@ -93,6 +100,7 @@ public class PlayerMovement : MonoBehaviour, ICollectable
         {
             // isJumping = true;
             isJumping = true;
+            wasGrounded = false;
             playerAnim.SetTrigger("Jump");
             jumpCount++;
             charaVelocity.y += Mathf.Sqrt(jumpHeight * -4f * gravityScale);
